@@ -1,7 +1,15 @@
 import 'package:flutter/material.dart';
 
-class Home extends StatelessWidget {
+class Home extends StatefulWidget {
   const Home({super.key});
+
+  @override
+  State<Home> createState() => _HomeState();
+}
+
+class _HomeState extends State<Home> {
+
+  int ninjaLevel = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +35,10 @@ class Home extends StatelessWidget {
                 radius: 40,
               ),
             ),
-            Divider(height: 90, color: Colors.grey[800],),
+            Divider(
+              height: 90,
+              color: Colors.grey[800],
+            ),
             Text('NAME',
                 style: TextStyle(color: Colors.grey, letterSpacing: 2.0)),
             SizedBox(
@@ -47,7 +58,7 @@ class Home extends StatelessWidget {
             SizedBox(
               height: 10,
             ),
-            Text('8',
+            Text('$ninjaLevel',
                 style: TextStyle(
                     color: Colors.amberAccent[200],
                     letterSpacing: 2.0,
@@ -71,6 +82,16 @@ class Home extends StatelessWidget {
             )
           ],
         ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        shape: CircleBorder(),
+        onPressed: () {
+          setState(() {
+            ninjaLevel++;
+          });
+        },
+        backgroundColor: Colors.grey[800],
+        child: Icon(Icons.add, color: Colors.white,),
       ),
     );
   }
